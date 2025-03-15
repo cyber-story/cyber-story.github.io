@@ -2,8 +2,8 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background-size: cover;
     background: url('../img/bg.png') no-repeat center center fixed;
+    background-size: cover;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -106,4 +106,10 @@ body {
 .continue-button:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
+}
+
+.result-text {
+    text-align: center;
+    font-size: 24px;
+    margin-top: 20px;
 }

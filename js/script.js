@@ -67,8 +67,26 @@ function renderStep(step) {
 
     // Обработчик кнопки "Продолжить"
     continueButton.addEventListener('click', () => {
-        currentStepIndex = step.cards.find(card => card.type === 'next').nextIndex;
-        renderStep(stepsData[currentStepIndex]);
+        const nextCard = step.cards.find(card => card.type === 'next');
+        if (nextCard) {
+            const nextCardElement = Array.from(cardsContainer.children).find(cardElement => {
+                return cardElement.querySelector('.card-front').textContent === nextCard.action;
+            });
+
+            if (nextCardElement && nextCardElement.classList.contains('flipped')) {
+                currentStepIndex = nextCard.nextIndex;
+                if (stepsData[currentStepIndex]) {
+                    renderStep(stepsData[currentStepIndex]);
+                } else {
+                    // Если шагов больше нет, можно вывести сообщение или завершить историю
+                    alert('Нет карточки на этот шаг!');
+                }
+            } else {
+                alert('Сначала переверните карточку с типом "next"!');
+            }
+        } else {
+            console.error('Карточка с типом "next" не найдена.');
+        }
     });
 }
 
