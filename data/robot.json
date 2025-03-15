@@ -13,14 +13,14 @@
             },
             {
                 "action": "Идти прямо",
-                "type": "try",
+                "type": "next",
                 "result": "Вы встретили монстра!",
                 "background": "https://example.com/background3.jpg",
                 "nextIndex": 2
             },
             {
                 "action": "Идти направо",
-                "type": "try",
+                "type": "next",
                 "result": "Вы заблудились...",
                 "background": "https://example.com/background4.jpg",
                 "nextIndex": 3
@@ -41,10 +41,10 @@
             },
             {
                 "action": "Оставить сокровище",
-                "type": "try",
-                "result": "Сокровище исчезло...",
+                "type": "next",
+                "result": "Сокровище исчезло... и вам стало очень грустно",
                 "background": "https://example.com/background6.jpg",
-                "nextIndex": 0
+                "nextIndex": 5
             }
         ]
     },
@@ -55,10 +55,10 @@
         "cards": [
             {
                 "action": "Сражаться",
-                "type": "try",
+                "type": "next",
                 "result": "Вы победили монстра!",
                 "background": "https://example.com/background7.jpg",
-                "nextIndex": 1
+                "nextIndex": 0
             },
             {
                 "action": "Бежать",
@@ -66,6 +66,13 @@
                 "result": "Вы сбежали, но заблудились...",
                 "background": "https://example.com/background8.jpg",
                 "nextIndex": 3
+            },
+            {
+                "action": "Попытаться поговорить с ним.",
+                "type": "next",
+                "result": "Вас сломали... полностью",
+                "background": "https://example.com/background8.jpg",
+                "nextIndex": 5
             }
         ]
     },
@@ -76,17 +83,17 @@
         "cards": [
             {
                 "action": "Искать выход",
-                "type": "try",
-                "result": "Вы нашли дорогу!",
+                "type": "next",
+                "result": "Вы нашли дорогу назад!",
                 "background": "https://example.com/background9.jpg",
-                "nextIndex": 1
+                "nextIndex": 0
             },
             {
                 "action": "Остаться на месте",
                 "type": "next",
                 "result": "Вы замерзли...",
                 "background": "https://example.com/background10.jpg",
-                "nextIndex": 0
+                "nextIndex": 5
             }
         ]
     },
@@ -94,6 +101,12 @@
         "index": 4,
         "background": "https://example.com/background5.jpg",
         "description": "Вы стали богатым! История завершена.",
+        "cards": []
+    },
+    {
+        "index": 5,
+        "background": "https://example.com/background5.jpg",
+        "description": "Вы погибли! История завершена.",
         "cards": []
     }
 ]
