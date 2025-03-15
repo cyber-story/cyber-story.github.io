@@ -3,7 +3,7 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-size: cover;
-    background: url('img/bg.png') no-repeat center center fixed;
+    background: url('../img/bg.png') no-repeat center center fixed;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -79,7 +79,6 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     background-color: #007bff;
-    padding: 10px;
     text-align: center;
 }
 
