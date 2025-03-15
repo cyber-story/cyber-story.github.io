@@ -67,25 +67,30 @@ function renderStep(step) {
 
     // Обработчик кнопки "Продолжить"
     continueButton.addEventListener('click', () => {
-        const nextCard = step.cards.find(card => card.type === 'next');
-        if (nextCard) {
-            const nextCardElement = Array.from(cardsContainer.children).find(cardElement => {
-                return cardElement.querySelector('.card-front').textContent === nextCard.action;
-            });
+        const cards = Array.from(cardsContainer.children);
 
-            if (nextCardElement && nextCardElement.classList.contains('flipped')) {
+        // Ищем перевёрнутую карточку с типом "next"
+        const nextCardElement = cards.find(cardElement => {
+            const isFlipped = cardElement.classList.contains('flipped');
+            const cardAction = cardElement.querySelector('.card-front').textContent;
+            const cardData = step.cards.find(card => card.action === cardAction);
+            return isFlipped && cardData && cardData.type === 'next';
+        });
+
+        if (nextCardElement) {
+            const cardAction = nextCardElement.querySelector('.card-front').textContent;
+            const nextCard = step.cards.find(card => card.action === cardAction);
+
+            if (nextCard) {
                 currentStepIndex = nextCard.nextIndex;
                 if (stepsData[currentStepIndex]) {
                     renderStep(stepsData[currentStepIndex]);
                 } else {
-                    // Если шагов больше нет, можно вывести сообщение или завершить историю
-                    alert('Нет карточки на этот шаг!');
+                    alert('История завершена!');
                 }
-            } else {
-                alert('Сначала переверните карточку с типом "next"!');
             }
         } else {
-            console.error('Карточка с типом "next" не найдена.');
+            alert('Сначала переверните карточку с типом "next"!');
         }
     });
 }
