@@ -1,0 +1,99 @@
+[
+    {
+        "index": 0,
+        "background": "https://example.com/background1.jpg",
+        "description": "Вы оказались в загадочном лесу. Перед вами три пути. Выберите один:",
+        "cards": [
+            {
+                "action": "Идти налево",
+                "type": "next",
+                "result": "Вы нашли сокровище!",
+                "background": "https://example.com/background2.jpg",
+                "nextIndex": 1
+            },
+            {
+                "action": "Идти прямо",
+                "type": "try",
+                "result": "Вы встретили монстра!",
+                "background": "https://example.com/background3.jpg",
+                "nextIndex": 2
+            },
+            {
+                "action": "Идти направо",
+                "type": "try",
+                "result": "Вы заблудились...",
+                "background": "https://example.com/background4.jpg",
+                "nextIndex": 3
+            }
+        ]
+    },
+    {
+        "index": 1,
+        "background": "https://example.com/background2.jpg",
+        "description": "Вы нашли сокровище! Что будете делать дальше?",
+        "cards": [
+            {
+                "action": "Взять сокровище",
+                "type": "next",
+                "result": "Вы стали богатым!",
+                "background": "https://example.com/background5.jpg",
+                "nextIndex": 4
+            },
+            {
+                "action": "Оставить сокровище",
+                "type": "try",
+                "result": "Сокровище исчезло...",
+                "background": "https://example.com/background6.jpg",
+                "nextIndex": 0
+            }
+        ]
+    },
+    {
+        "index": 2,
+        "background": "https://example.com/background3.jpg",
+        "description": "Вы встретили монстра! Что будете делать?",
+        "cards": [
+            {
+                "action": "Сражаться",
+                "type": "try",
+                "result": "Вы победили монстра!",
+                "background": "https://example.com/background7.jpg",
+                "nextIndex": 1
+            },
+            {
+                "action": "Бежать",
+                "type": "next",
+                "result": "Вы сбежали, но заблудились...",
+                "background": "https://example.com/background8.jpg",
+                "nextIndex": 3
+            }
+        ]
+    },
+    {
+        "index": 3,
+        "background": "https://example.com/background4.jpg",
+        "description": "Вы заблудились... Что будете делать?",
+        "cards": [
+            {
+                "action": "Искать выход",
+                "type": "try",
+                "result": "Вы нашли дорогу!",
+                "background": "https://example.com/background9.jpg",
+                "nextIndex": 1
+            },
+            {
+                "action": "Остаться на месте",
+                "type": "next",
+                "result": "Вы замерзли...",
+                "background": "https://example.com/background10.jpg",
+                "nextIndex": 0
+            }
+        ]
+    },
+    {
+        "index": 4,
+        "background": "https://example.com/background5.jpg",
+        "description": "Вы стали богатым! История завершена.",
+        "cards": []
+    }
+]
