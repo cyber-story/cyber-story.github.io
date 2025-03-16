@@ -2,6 +2,7 @@ body {
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
+    font-size: 12px;
     background: url('../img/bg.png') no-repeat center center fixed;
     /* background-size: cover; */
     height: 100vh;
@@ -39,7 +40,7 @@ body {
 
 .narrative-text {
     text-align: center;
-    font-size: 20px;
+    font-size: 15px;
     margin-bottom: 30px;
 }
 
@@ -89,7 +90,7 @@ body {
 
 .continue-button {
     padding: 15px 30px;
-    font-size: 18px;
+    font-size: 15px;
     color: white;
     background-color: #28a745;
     border: none;
@@ -110,6 +111,6 @@ body {
 
 .result-text {
     text-align: center;
-    font-size: 24px;
+    font-size: 15px;
     margin-top: 20px;
 }

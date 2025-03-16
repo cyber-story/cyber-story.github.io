@@ -1,111 +1,236 @@
 [
     {
         "index": 0,
-        "background": "https://example.com/background1.jpg",
-        "description": "Вы оказались в загадочном лесу. Перед вами три пути. Выберите один:",
+        "background": "../img/bg.png",
+        "description": "Вы — маленький робот по имени Бит. Вы работаете на фабрике, производства батарей. От долгой работы ваши детали износились и вам стало очень сложно выполнять свою работу. Вам нужно сходить на осмотр.",
         "cards": [
             {
-                "action": "Идти налево",
+                "action": "Отправиться на осмотр",
                 "type": "next",
-                "result": "Вы нашли сокровище!",
-                "background": "https://example.com/background2.jpg",
+                "result": "Вы отметились на рабочем месте и ушли",
+                "background": "../img/bg.png",
                 "nextIndex": 1
-            },
-            {
-                "action": "Идти прямо",
-                "type": "next",
-                "result": "Вы встретили монстра!",
-                "background": "https://example.com/background3.jpg",
-                "nextIndex": 2
-            },
-            {
-                "action": "Идти направо",
-                "type": "next",
-                "result": "Вы заблудились...",
-                "background": "https://example.com/background4.jpg",
-                "nextIndex": 3
             }
         ]
     },
     {
         "index": 1,
-        "background": "https://example.com/background2.jpg",
-        "description": "Вы нашли сокровище! Что будете делать дальше?",
+        "background": "../img/bg.png",
+        "description": "По результатам осмотра, вам не рекомендовали продолжать работать на фабрике, т.к. это может привести к фатальным разрушениям. Вам нужно вернуться и сообщить руководству.",
         "cards": [
             {
-                "action": "Взять сокровище",
+                "action": "Отправиться к руководству фабрики",
                 "type": "next",
-                "result": "Вы стали богатым!",
-                "background": "https://example.com/background5.jpg",
-                "nextIndex": 4
+                "result": "топ-топ-топ",
+                "background": "../img/bg.png",
+                "nextIndex": 2
             },
             {
-                "action": "Оставить сокровище",
-                "type": "next",
-                "result": "Сокровище исчезло... и вам стало очень грустно",
-                "background": "https://example.com/background6.jpg",
-                "nextIndex": 5
+                "action": "Немного отдохнуть",
+                "type": "try",
+                "result": "Не время отдыхать",
+                "background": "../img/bg.png",
+                "nextIndex": 1
             }
         ]
     },
     {
         "index": 2,
-        "background": "https://example.com/background3.jpg",
-        "description": "Вы встретили монстра! Что будете делать?",
+        "background": "../img/bg.png",
+        "description": "Вы находитесь в кабинете старшего дрона, он готов вас выслушать",
         "cards": [
             {
-                "action": "Сражаться",
+                "action": "Сообщить что у вас всё хорошо и вы можете продолжать работу",
                 "type": "next",
-                "result": "Вы победили монстра!",
-                "background": "https://example.com/background7.jpg",
-                "nextIndex": 0
-            },
-            {
-                "action": "Бежать",
-                "type": "next",
-                "result": "Вы сбежали, но заблудились...",
-                "background": "https://example.com/background8.jpg",
+                "result": "Не самым уверенным голосом, но звучало убедительно",
+                "background": "../img/bg.png",
                 "nextIndex": 3
             },
             {
-                "action": "Попытаться поговорить с ним.",
+                "action": "Сообщить о проблеме",
                 "type": "next",
-                "result": "Вас сломали... полностью",
-                "background": "https://example.com/background8.jpg",
-                "nextIndex": 5
+                "result": "В подробностях вы всё рассказали",
+                "background": "../img/bg.png",
+                "nextIndex": 6
             }
         ]
     },
     {
         "index": 3,
-        "background": "https://example.com/background4.jpg",
-        "description": "Вы заблудились... Что будете делать?",
+        "background": "../img/bg.png",
+        "description": "Старший дрон с недоверием отнёсся к этой информации, но дал разрешение на продолжение работы",
         "cards": [
             {
-                "action": "Искать выход",
+                "action": "Отправиться на своё рабочее место",
                 "type": "next",
-                "result": "Вы нашли дорогу назад!",
-                "background": "https://example.com/background9.jpg",
-                "nextIndex": 0
-            },
-            {
-                "action": "Остаться на месте",
-                "type": "next",
-                "result": "Вы замерзли...",
-                "background": "https://example.com/background10.jpg",
-                "nextIndex": 5
+                "result": "Шарниры наскрипывают знакомую мелодию",
+                "background": "../img/bg.png",
+                "nextIndex": 4
             }
         ]
     },
     {
         "index": 4,
-        "background": "https://example.com/background5.jpg",
-        "description": "Вы стали богатым! История завершена.",
-        "cards": []
+        "background": "../img/bg.png",
+        "description": "Вы приступили к работе, но к концу смены, вы очень отчётливо понимаете что становится только хуже, рабочий день окончен и вы отправляетесь домой",
+        "cards": [
+            {
+                "action": "Отправиться домой",
+                "type": "next",
+                "result": "Вы не планируете возвращаться пока не решите проблему",
+                "background": "../img/bg.png",
+                "nextIndex": 5
+            }
+        ]
     },
     {
         "index": 5,
-        "background": "https://example.com/background5.jpg",
+        "background": "../img/bg.png",
+        "description": "Вы в раздумьях о том, где можно починиться, идёте домой как вдруг в поле зрения попадается рекламный плакат, который гласит \"Лучшая жизнь в Парящем Городе\". С красочной иллюстрацией беззаботного города и их жителей. Вы слышите голос позади себя: \"Говорят в этом городе есть всё что нужно. Вот бы туда попасть.\"",
+        "cards": [
+            {
+                "action": "Резко повернуться",
+                "type": "next",
+                "result": "Что-то хрустнуло в месте крепления головы (-1 hp)",
+                "background": "../img/bg.png",
+                "effect": {
+                    "hp": -1
+                },
+                "nextIndex": 7
+            },{
+                "action": "Просто обернуться",
+                "type": "next",
+                "result": "Вы смогли повернуть голову только на половину, остальное пришлось доворачивать телом",
+                "background": "../img/bg.png",
+                "nextIndex": 7
+            },{
+                "action": "Медленно обернуться",
+                "type": "next",
+                "result": "Кажется прошла вечность пока в вашем поле зрения не появился силуэт",
+                "background": "../img/bg.png",
+                "nextIndex": 7
+            }
+        ]
+    },
+    {
+        "index": 6,
+        "background": "../img/bg.png",
+        "description": "Старший дрон выдал вас срочное распоряжение прекратить любую рабочую деятельность до устранения неполадок. Контракт не предусматривает ремонт за счет фабрики.",
+        "cards": [
+            {
+                "action": "Отправиться домой",
+                "type": "next",
+                "result": "топ-топ-топ",
+                "background": "../img/bg.png",
+                "nextIndex": 5
+            }
+        ]
+    },
+    {
+        "index": 7,
+        "background": "../img/bg.png",
+        "description": "Перед вами стоит чудоковатый робот, не то разваливающийся, не то креативно собранный",
+        "cards": [
+            {
+                "action": "Спросить, кто он такой",
+                "type": "next",
+                "result": "\"А ты, собственно, кто такой?\"",
+                "background": "../img/bg.png",
+                "nextIndex": 8
+            },
+            {
+                "action": "Поиинтересоваться как попасть в Парящий город",
+                "type": "next",
+                "result": "Собеседник охотно соглашается",
+                "background": "../img/bg.png",
+                "nextIndex": 11
+            }
+        ]
+    },
+    {
+        "index": 8,
+        "background": "../img/bg.png",
+        "description": "\"Я Шоди - незанятый робот. А ты видимо из этих, кто всю жизнь работает.\" - Насмехается Шоди",
+        "cards": [
+            {
+                "action": "Пнуть Шоди",
+                "type": "try",
+                "result": "Из-за плохого состояния вас заклинило, и вы даже недотянулись до обидчика",
+                "background": "../img/bg.png",
+                "nextIndex": 8
+            },
+            {
+                "action": "Обозвать Шоди бесполезным куском железа",
+                "type": "next",
+                "result": "Вы очень довольны собой, но... (-1 hp)",
+                "background": "../img/bg.png",
+                "effect": {
+                    "hp": -1
+                },
+                "nextIndex": 9
+            },
+            {
+                "action": "Проигнорировать, и спросить как попасть в Парящий город",
+                "type": "next",
+                "result": "Без энтузиазма, но Шоди начал говорить",
+                "background": "../img/bg.png",
+                "nextIndex": 11
+            }
+        ]
+    },
+    {
+        "index": 9,
+        "background": "../img/bg.png",
+        "description": "Шоди толкает вас и вы упали, а сам Шоди ушел. Кажется из-за своего состояния вы не можете подняться",
+        "cards": [
+            {
+                "action": "Постараться встать",
+                "type": "try",
+                "result": "У вас не хватает подвижности, что бы раскачаться",
+                "background": "../img/bg.png",
+                "nextIndex": 9
+            },
+            {
+                "action": "Посчитать птиц на небе",
+                "type": "next",
+                "result": "Прошло много времени и вот кажется кто-то приближается к вам",
+                "background": "../img/bg.png",
+                "nextIndex": 10
+            }
+        ]
+    },
+    {
+        "index": 10,
+        "background": "../img/bg.png",
+        "description": "Это был бот уборщик. Врезавшись в вас, он придал импульс и вам удалось подняться.",
+        "cards": [
+            {
+                "action": "Обозвать бота нехорошим словом",
+                "type": "try",
+                "result": "Опыт подсказывает что это не лучшая идея, и вы передумали",
+                "background": "../img/bg.png",
+                "nextIndex": 10
+            },
+            {
+                "action": "Остановить бота и постараться узнать как попасть в Парящий город",
+                "type": "next",
+                "result": "Равнодушный голос бота вам сообщил следующую информацию:",
+                "background": "../img/bg.png",
+                "nextIndex": 11
+            }
+        ]
+    },
+    {
+        "index": 11,
+        "background": "../img/bg.png",
+        "description": "\"Тебе нужно добраться до станции, откуда отправляются платформы до города\"",
+        "cards": [
+            
+        ]
+    },
+    {
+        "index": 999,
+        "background": "../img/bg.png",
         "description": "Вы погибли! История завершена.",
         "cards": []
     }
