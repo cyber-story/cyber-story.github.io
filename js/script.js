@@ -1,6 +1,7 @@
 const tg = Telegram.WebApp;
 let currentStepIndex = 0;
 let stepsData = [];
+let currentStep = null; // Глобальная переменная для хранения текущей карточки с типом "next"
 
 // Состояние игрока
 const playerState = {
@@ -44,31 +45,43 @@ document.getElementById('start-button').addEventListener('click', () => {
     //         renderStep(stepsData[currentStepIndex]);
     //     }
     // });
+    
+    document.getElementById('container').innerHTML = `
+    <div class="image-block" id="image-block"></div>
+    <div class="text-block" id="text-block"></div>
+    <div class="cards-container" id="cards-container"></div>
+    <button class="continue-button" id="continue-button">Продолжить</button>
+    `;
+
     currentStepIndex = 0;
-            playerState.hp = 5; // Сбрасываем здоровье
-            playerState.inventory = []; // Очищаем инвентарь
-            playerState.usedCards = []; // Очищаем использованные карточки
-            renderStep(stepsData[currentStepIndex]);
+    playerState.hp = 5; // Сбрасываем здоровье
+    playerState.inventory = []; // Очищаем инвентарь
+    playerState.usedCards = []; // Очищаем использованные карточки
+    renderStep(stepsData[currentStepIndex]);
 });
 
 // Функция для отрисовки шага
 function renderStep(step) {
-    // Устанавливаем фоновое изображение для body
-    document.body.style.backgroundImage = `url('${step.background}')`;
-
-    document.body.innerHTML = `
-        <div class="username" id="username">${usernameElement.textContent}</div>
-        <div class="narrative-text">${step.description}</div>
-        <div class="cards-container" id="cards-container"></div>
-        <button class="continue-button" id="continue-button" disabled>Продолжить</button>
-        <div class="player-state">
-            <p>Здоровье: ${playerState.hp}</p>
-            <!--p>Инвентарь: ${playerState.inventory.join(', ') || 'пусто'}</p-->
-        </div>
-    `;
-
+    const imageBlock = document.getElementById('image-block');
+    const textBlock = document.getElementById('text-block');
     const cardsContainer = document.getElementById('cards-container');
     const continueButton = document.getElementById('continue-button');
+
+    // Устанавливаем фоновое изображение для блока с картинкой
+    imageBlock.style.backgroundImage = `url('${step.background}')`;
+
+    // Устанавливаем текст описания
+    textBlock.textContent = step.description;
+
+    // Очищаем контейнер с карточками
+    cardsContainer.innerHTML = '';
+
+    // Сбрасываем текущую карточку с типом "next"
+    currentStep = null;
+
+    // Удаляем старый обработчик события кнопки "Продолжить"
+    const newContinueButton = continueButton.cloneNode(true); // Клонируем кнопку
+    continueButton.replaceWith(newContinueButton); // Заменяем старую кнопку на клон
 
     // Перемешиваем карточки
     const shuffledCards = step.cards.sort(() => Math.random() - 0.5);
@@ -85,6 +98,7 @@ function renderStep(step) {
 
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
+        cardElement.dataset.cardId = cardId; // Добавляем идентификатор карточки в DOM
 
         cardElement.innerHTML = `
             <div class="card-inner">
@@ -98,34 +112,29 @@ function renderStep(step) {
     });
 
     // Обработчик кнопки "Продолжить"
-    continueButton.addEventListener('click', () => {
-        const cards = Array.from(cardsContainer.children);
-
-        // Ищем перевёрнутую карточку с типом "next"
-        const nextCardElement = cards.find(cardElement => {
-            const isFlipped = cardElement.classList.contains('flipped');
-            const cardAction = cardElement.querySelector('.card-front').textContent;
-            const cardData = step.cards.find(card => card.action === cardAction);
-            return isFlipped && cardData && cardData.type === 'next';
-        });
-
-        if (nextCardElement) {
-            const cardAction = nextCardElement.querySelector('.card-front').textContent;
-            const nextCard = step.cards.find(card => card.action === cardAction);
-
-            if (nextCard) {
-                currentStepIndex = nextCard.nextIndex;
-                if (stepsData[currentStepIndex]) {
-                    renderStep(stepsData[currentStepIndex]);
-                } else {
-                    alert('История завершена!');
-                }
+    newContinueButton.disabled = true; // Сбрасываем состояние кнопки
+    newContinueButton.addEventListener('click', () => {
+        if (currentStep) {
+            currentStepIndex = currentStep.nextIndex;
+            if (stepsData[currentStepIndex]) {
+                renderStep(stepsData[currentStepIndex]);
+            } else {
+                alert('История завершена!');
             }
         } else {
             alert('Сначала переверните карточку с типом "next"!');
         }
     });
+
+    // Обновляем отображение состояния игрока (только здоровье)
+    const playerStateElement = document.querySelector('.player-state');
+    if (playerStateElement) {
+        playerStateElement.innerHTML = `
+            <p>Здоровье: ${playerState.hp}</p>
+        `;
+    }
 }
+
 
 // Обработчик клика по карточке
 function handleCardClick(card, cardElement, cardsContainer, cardId) {
@@ -134,16 +143,12 @@ function handleCardClick(card, cardElement, cardsContainer, cardId) {
         return;
     }
 
-    // Если у карточки есть класс "freeze-flip", ничего не делаем
-    if (cardElement.classList.contains('freeze-flip')) {
-        return;
-    }
-
     // Переворачиваем карточку
     cardElement.classList.add('flipped');
 
-    // Если карточка имеет тип "next", блокируем переворот других карточек
+    // Если карточка имеет тип "next", сохраняем её данные
     if (card.type === 'next') {
+        currentStep = card; // Сохраняем данные карточки
         const continueButton = document.getElementById('continue-button');
         continueButton.disabled = false;
 
@@ -161,6 +166,7 @@ function handleCardClick(card, cardElement, cardsContainer, cardId) {
         if (card.effect.hp) {
             playerState.hp += card.effect.hp; // Изменяем здоровье
             if (playerState.hp <= 0) {
+                alert('Вы погибли!');
                 currentStepIndex = 999; // Переход на шаг "Вы погибли"
                 renderStep(stepsData[currentStepIndex]);
                 return;
@@ -181,7 +187,7 @@ function handleCardClick(card, cardElement, cardsContainer, cardId) {
     if (playerStateElement) {
         playerStateElement.innerHTML = `
             <p>Здоровье: ${playerState.hp}</p>
-            <!--p>Инвентарь: ${playerState.inventory.join(', ') || 'пусто'}</p-->
+            <p>Инвентарь: ${playerState.inventory.join(', ') || 'пусто'}</p>
         `;
     }
 }
