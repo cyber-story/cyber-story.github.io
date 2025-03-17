@@ -50,7 +50,7 @@ body {
 
 .image-block {
     width: 100%;
-    aspect-ratio: 1 / 1; /* Соотношение сторон 1:1 */
+    aspect-ratio: 16 / 9; /* Соотношение сторон 1:1 */
     background-size: cover;
     background-position: center;
     border-radius: 10px;
@@ -74,7 +74,7 @@ body {
 }
 
 .card {
-    width: calc(30% - 5px); /* Две карточки в ряд с отступом */
+    width: calc(30% - 5px); /* 3 карточки в ряд с отступом */
     aspect-ratio: 1 / 1.5; /* Соотношение сторон карточки */
     perspective: 1000px;
     cursor: pointer;
@@ -106,26 +106,27 @@ body {
     padding: 10px;
     box-sizing: border-box;
     text-align: center;
-    font-size: 14px;
-    color: #fff;
+    font-size: 12px;
+    text-shadow: none;
+    color: #000000;
 }
 
 .card-front {
-    background-color: #007bff;
+    background-color: #cdb747;
 }
 
 .card-back {
-    background-color: #0056b3;
+    background-color: #00abb3;
     transform: rotateY(180deg);
 }
 
 .continue-button {
-    padding: 10px 20px;
-    font-size: 16px;
+    padding: 5px 10px;
+    font-size: 14px;
     color: #fff;
     background-color: #28a745;
     border: none;
-    border-radius: 5px;
+    border-radius: 20px 1px 10px 1px;
     cursor: pointer;
     float: right; /* Прижимаем кнопку к правой части */
     transition: background-color 0.3s ease;
