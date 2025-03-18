@@ -33,8 +33,8 @@ document.getElementById('start-button').addEventListener('click', () => {
     //     title: 'Начало истории',
     //     message: 'Вы готовы начать свою историю?',
     //     buttons: [
-    //         { id: 'yes', type: 'ok', text: 'Да' },
-    //         { id: 'no', type: 'cancel', text: 'Нет' }
+    //         { id: 'yes', type: 'default', text: 'Да' },
+    //         { id: 'no', type: 'default', text: 'Нет' }
     //     ]
     // }, function(buttonId) {
     //     if (buttonId === 'yes') {
@@ -140,6 +140,11 @@ function renderStep(step) {
 function handleCardClick(card, cardElement, cardsContainer, cardId) {
     // Если карточка уже перевёрнута, ничего не делаем
     if (cardElement.classList.contains('flipped')) {
+        return;
+    }
+
+    // Если карточка уже перевёрнута, ничего не делаем
+    if (cardElement.classList.contains('freeze-flip')) {
         return;
     }
 

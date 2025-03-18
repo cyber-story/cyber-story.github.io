@@ -25,6 +25,7 @@ body {
 .start-button {
     padding: 15px 30px;
     font-size: 18px;
+    width: 100%;
     color: white;
     background-color: #007bff;
     border: none;
@@ -55,6 +56,8 @@ body {
     background-position: center;
     border-radius: 10px;
     margin-bottom: 20px;
+    border: #a57e2a;
+    border-style: ridge;
 }
 
 .text-block {
